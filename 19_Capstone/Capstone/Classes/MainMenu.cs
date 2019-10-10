@@ -12,7 +12,7 @@ namespace Capstone.Classes
             while (menum == true)
             {
 
-                Console.WriteLine($"Main Menu \n\t\t\t\t1) Display Items \n\t\t\t\t2) Purchase \n\t\t\t\t3) Exit");
+                Console.WriteLine($"\t\t\t\tMain Menu \n\t\t\t\t1) Display Items \n\t\t\t\t2) Purchase \n\t\t\t\t3) Exit");
                 string input = Console.ReadLine().ToLower().Trim();
                 if (input.Length == 0)
                 {
@@ -32,6 +32,7 @@ namespace Capstone.Classes
                 }
                 if (input == "2")
                 {
+                    Console.Clear();
                     PurchaseMenu option = new PurchaseMenu();
 
                     option.purchaseMenu();

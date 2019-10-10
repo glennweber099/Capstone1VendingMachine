@@ -12,7 +12,7 @@ namespace Capstone.Classes
             while (menu == true)
             {
 
-                Console.WriteLine($"Purchase Menu \n\t\t\t\t1) Feed Money \n\t\t\t\t2) Select Product \n\t\t\t\t3) Finish \n\t\t\t\t {Money.balance}");
+                Console.WriteLine($"\t\t\t\tPurchase Menu \n\t\t\t\t1) Feed Money \n\t\t\t\t2) Select Product \n\t\t\t\t3) Finish \n\t\t\t\t {Money.balance:c}");
                 string input = Console.ReadLine().ToLower().Trim();
                 if (input.Length == 0)
                 {
@@ -28,39 +28,44 @@ namespace Capstone.Classes
                 }
                 if (input == "1")
                 {
-
+                    Console.Clear();
                     Console.WriteLine($"\t\t\t\t1) $1 \n\t\t\t\t2) $2 \n\t\t\t\t3) $5 \n\t\t\t\t4) $10");
-                    if (input == "1")
+                    string inputm = Console.ReadLine().ToLower().Trim();
+                    if (inputm == "1")
                     {
-                        Money.AddMoney(1);
+                        Money.AddMoney(1.00M);
+                        Console.Clear();
                         continue;
                     }
-                    if (input == "2")
+                    if (inputm == "2")
                     {
-                        Money.AddMoney(2);
+                        Money.AddMoney(2.00M);
+                        Console.Clear();
                         continue;
                     }
-                    if (input == "3")
+                    if (inputm == "3")
                     {
-                        Money.AddMoney(5);
+                        Money.AddMoney(5.00M);
+                        Console.Clear();
                         continue;
                     }
-                    if (input == "4")
+                    if (inputm == "4")
                     {
-                        Money.AddMoney(10);
+                        Money.AddMoney(10.00M);
+                        Console.Clear();
                         continue;
                     }
                 }
                 if (input == "2")
                 {
                     Console.WriteLine("Please enter a valid product code: ");
-                    if (Inventory.checkProductCode(Inventory.location))
+                    if (Inventory.checkProductCode(Products.Location))
                     {
-                        if (Inventory.checkInventory(Inventory.location))
+                        if (Inventory.checkInventory(Products.Location))
                         {
-                            Inventory.dispenseProduct(Inventory.location);
+                            Inventory.dispenseProduct(Products.Location);
                             Money.SubtractMoney(Money.balance);
-                            Inventory.updateInventory(Inventory.location);
+                            Inventory.updateInventory(Products.Location);
                         }
                         Console.WriteLine("SOLD OUT");
                         continue;

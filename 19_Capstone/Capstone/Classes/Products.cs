@@ -9,11 +9,11 @@ namespace Capstone.Classes
     {
         private const char separator = '|';
 
-        public string Location { get;  }
-        public string ProductName { get; }
-        public double ProductPrice { get;  }
-        public string ProductType { get; }
-        public int amountInStock
+        public static string Location { get;  }
+        public static string ProductName { get; }
+        public static double ProductPrice { get;  }
+        public static string ProductType { get; }
+        public static int amountInStock
         {
             get
             {
@@ -30,7 +30,7 @@ namespace Capstone.Classes
             productType = ProductType;
         }
 
-        Dictionary<string, int> inventoryLevel = new Dictionary<string, int>()
+        public static Dictionary<string, int> inventoryLevel = new Dictionary<string, int>()
         {
             { "A1", 5 },
             { "A2", 5 },
@@ -55,6 +55,7 @@ namespace Capstone.Classes
             // TODO: Load products from the file (Inventory.txt), parse and display inventory
             try
             {
+                Directory.SetCurrentDirectory(@"../../../..");
                 using (StreamReader sr = new StreamReader("Inventory.txt"))
                 {
                     while (!sr.EndOfStream)
@@ -64,14 +65,14 @@ namespace Capstone.Classes
 
                         Products product = new Products(fields[0], fields[1], double.Parse(fields[2]), fields[3]);
 
-                        Console.WriteLine(product);
+                        Console.WriteLine($"{fields[0]} - {fields[1]} - ${fields[2]:C}");
                     }
                 }
             }
             catch (Exception ex)
             {
                 // Inform the user 
-                Console.WriteLine($"There was an ERROR loading the file {Path}.  The error was {ex.Message}");
+                Console.WriteLine($"There was an ERROR loading the file {"Inventory.txt"}.  The error was {ex.Message}");
             }
         }
     }

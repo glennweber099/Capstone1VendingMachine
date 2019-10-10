@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Capstone.Classes
 {
     public class Inventory
     {
-        public static string location { get; private set; }
 
         public static bool checkInventory(string location)
         {
@@ -23,33 +23,33 @@ namespace Capstone.Classes
         }
         public static void dispenseProduct(string location)
         {
-            // TODO  Display message for different product types
-            if (productType == "Chip")
+            if (Products.ProductType == "Chip")
             {
                 Console.Write("Crunch Crunch, Yum!");
             }
 
-            else if (productType == "Candy")
+            else if (Products.ProductType == "Candy")
             {
                 Console.Write("Munch Munch, Yum!");
             }
 
-            else if (productType == "Drink")
+            else if (Products.ProductType == "Drink")
             {
                 Console.Write("Glug Glug, Yum!");
             }
 
 
-            else if (productType == "Gum")
+            else if (Products.ProductType == "Gum")
             {
                 Console.Write("Chew Chew, Yum!");
             }
 
             try
             {   // TODO Update variables to call data
-                using (StreamWriter writer = new StreamWriter(Log.txt, true))
+                Directory.SetCurrentDirectory(@"../../../..");
+                using (StreamWriter writer = new StreamWriter("Log.txt", true))
                 {
-                    string outputData = $"{DateTime} {Products.ProductName} {Products.Location} {Products.ProductPrice} {Balance}";
+                    string outputData = $"{DateTime.Now}{Products.ProductName} {Products.Location} {Products.ProductPrice} {Money.balance}";
                     writer.WriteLine(outputData);
                     
                 }
@@ -65,7 +65,7 @@ namespace Capstone.Classes
         public static void updateInventory(string location)
         {
             // TODO Update amount remaining
-            inventoryLevel[Location] -= 1;
+            Products.inventoryLevel[location] -= 1;
         }
     }
 }

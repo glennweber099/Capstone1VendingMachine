@@ -8,9 +8,9 @@ namespace Capstone.Classes
     public class Money
     {
         public static decimal balance { get; private set; }
-        public static void AddMoney(int amount)
+        public static void AddMoney(decimal amount)
         {
-            balance += amount;
+            balance = balance + amount;
         }
         public static void SubtractMoney(decimal amount)
         {
