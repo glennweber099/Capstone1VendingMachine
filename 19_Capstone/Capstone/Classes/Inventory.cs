@@ -10,13 +10,12 @@ namespace Capstone.Classes
 
         public static bool checkInventory(string location)
         {
-            if (Products.amountInStock > 0)
+            if (Products.inventoryLevel[location] > 0)
             {
                 return true;
             }
             return false;
         }
-
         public static bool checkProductCode(string location)
         {
             if (Products.inventoryLevel.ContainsKey(location))
@@ -30,27 +29,31 @@ namespace Capstone.Classes
             if (Products.ProductType == "Chip")
             {
                 Console.Write("Crunch Crunch, Yum!");
+                Console.ReadLine();
             }
 
             else if (Products.ProductType == "Candy")
             {
                 Console.Write("Munch Munch, Yum!");
+                Console.ReadLine();
             }
 
             else if (Products.ProductType == "Drink")
             {
                 Console.Write("Glug Glug, Yum!");
+                Console.ReadLine();
             }
 
 
             else if (Products.ProductType == "Gum")
             {
                 Console.Write("Chew Chew, Yum!");
+                Console.ReadLine();
             }
 
             try
             {  
-                Directory.SetCurrentDirectory(@"../../../..");
+                //Directory.SetCurrentDirectory(@"../../../..");
                 using (StreamWriter writer = new StreamWriter("Log.txt", true))
                 {
                     string outputData = $"{DateTime.Now}{Products.ProductName} {Products.Location} {Products.ProductPrice} {Money.balance}";

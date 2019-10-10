@@ -9,12 +9,13 @@ namespace Capstone.Classes
     {
         private const char separator = '|';
 
-        public static string Location { get;  }
-        public static string ProductName { get; }
-        public static decimal ProductPrice { get;  }
-        public static string ProductType { get; }
+        public static string Location { get; private set; }
+        public static string ProductName { get; private set; }
+        public static decimal ProductPrice { get; private set; }
+        public static string ProductType { get; private set; }
+        public static int InventoryLevels { private get; set; }
 
-        public Dictionary<string, int> inventoryLevel = new Dictionary<string, int>()
+        public static Dictionary<string, int> inventoryLevel = new Dictionary<string, int>()
         {
             { "A1", 5 },
             { "A2", 5 },
@@ -34,29 +35,23 @@ namespace Capstone.Classes
             { "D4", 5 },
         };
 
-        public int amountInStock
-        {
-            get
-            {
-                return inventoryLevel[Location];
-            }
-        }
-
 
         public Products(string location, string productName, decimal productPrice, string productType)
         {
-            location = Location;
-            productName = ProductName;
-            productPrice = ProductPrice;
-            productType = ProductType;
+            Location = location;
+            ProductName = productName;
+            ProductPrice = productPrice;
+            ProductType = productType;
+            
         }
 
 
         public static void LoadInventory()
         {
+            List<Products> products = new List<Products>();
             try
             {
-                Directory.SetCurrentDirectory(@"../../../..");
+                //Directory.SetCurrentDirectory(@"../../../..");
                 using (StreamReader sr = new StreamReader("Inventory.txt"))
                 {
                     while (!sr.EndOfStream)
@@ -65,8 +60,8 @@ namespace Capstone.Classes
                         string[] fields = inputLine.Split(separator);
 
                         Products product = new Products(fields[0], fields[1], decimal.Parse(fields[2]), fields[3]);
-
                         Console.WriteLine($"{fields[0]} - {fields[1]} - ${fields[2]:C}");
+                        products.Add(product);
                     }
                 }
             }

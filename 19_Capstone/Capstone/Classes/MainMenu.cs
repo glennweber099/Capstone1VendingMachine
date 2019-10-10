@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace Capstone.Classes
 {
@@ -8,6 +9,7 @@ namespace Capstone.Classes
     {
         static void Main(string[] args)
         {
+            Directory.SetCurrentDirectory(@"../../../..");
             bool menum = true;
             while (menum == true)
             {

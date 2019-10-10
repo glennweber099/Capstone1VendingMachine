@@ -60,24 +60,26 @@ namespace Capstone.Classes
                 {
                     Console.WriteLine("Please enter a valid product code: ");
                     string inputl = Console.ReadLine().Trim();
-                    if (Inventory.checkProductCode(inputl))
-                    {
+                    //if (Inventory.checkProductCode(inputl))
+                    //{
                         if (Inventory.checkInventory(inputl))
                         {
                             Inventory.dispenseProduct(inputl);
                             Money.SubtractMoney(Products.ProductPrice);
                             Inventory.updateInventory(inputl);
                         }
+                        else
+                        {
                         Console.WriteLine("SOLD OUT");
+                        }
                         continue;
-                    }
-                    Console.WriteLine("Invalid Product Code");
-                    continue;
+                    //}
+                    //Console.WriteLine("Invalid Product Code");
+                    //continue;
                 }
                 if (input == "3")
                 {
                     Money.GiveChange(Money.balance);
-                    Console.WriteLine("/nThis was the change given");
                     Console.ReadLine();
                     Console.Clear();
                     menu = false;

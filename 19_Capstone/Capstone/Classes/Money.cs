@@ -18,10 +18,10 @@ namespace Capstone.Classes
         }
         public static string GiveChange(decimal remainingBalance)
         {
-            string changeGivenString = ""; 
             int quarterCount = 0;
             int dimeCount = 0;
             int nickelCount = 0;
+            string changeGivenString = $"Quarter(s): {quarterCount}\n Dime(s): {dimeCount} \n Nickel(s): {nickelCount}";
             while ((remainingBalance - 0.25M) > 0.10M)
             {
                 remainingBalance -= 0.25M;
@@ -37,7 +37,6 @@ namespace Capstone.Classes
                 remainingBalance -= 0.05M;
                 nickelCount++;
             }
-            changeGivenString = $"Quarter(s): {quarterCount}\n Dime(s): {dimeCount} \n Nickel(s): {nickelCount}";
             return changeGivenString;
 
         }
