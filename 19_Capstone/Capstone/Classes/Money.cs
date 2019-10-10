@@ -53,9 +53,6 @@ namespace Capstone.Classes
             }
             string returnString = $"\nQuarter(s):{quarterCount}\n Dime(s):{dimeCount} \n Nickel(s):{nickelCount}";
             return returnString;
-            
-
-
         }
     }
 }

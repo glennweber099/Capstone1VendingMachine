@@ -10,19 +10,23 @@ namespace CapstoneTests
     [TestClass]
     public class MoneyTests
     {
-        private 
+        private class Money { }
 
         [DataTestMethod]
-        [DataRow(3, "Fizz", DisplayName = "Testing #3")]
+        [DataRow(, , DisplayName = "")]
 
 
         public void BalanceTest1(int submittedNumber, string expectedResult)
         {
+            // Arrange
+            // Create a new object
+            Money product = new Money();
+
             // Act
-            decimal actualResult
+            
 
             // Assert
-            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual(expectedResult, actualRN);
         }
     }
     

@@ -7,7 +7,6 @@ namespace Capstone.Classes
 {
     public class Inventory
     {
-
         public static bool checkInventory(string location)
         {
             if (VendingMachine.stockedMachineInventory[location] > 0)
@@ -31,20 +30,16 @@ namespace Capstone.Classes
                 Console.Write("Crunch Crunch, Yum!");
                 Console.ReadLine();
             }
-
             else if (location.Substring(0, 1).ToLower() == "b")
                 {
                 Console.Write("Munch Munch, Yum!");
                 Console.ReadLine();
             }
-
             else if (location.Substring(0, 1).ToLower() == "c")
                     {
                 Console.Write("Glug Glug, Yum!");
                 Console.ReadLine();
             }
-
-
             else if (location.Substring(0, 1).ToLower() == "d")
                         {
                 Console.Write("Chew Chew, Yum!");

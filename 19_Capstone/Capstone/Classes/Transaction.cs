@@ -15,12 +15,10 @@ namespace Capstone.Classes
                 {
                     string outputData = $"{DateTime.Now} {VendingMachine.productName[location]} {location.ToUpper()} {Money.previousBalance:c} {Money.balance:c}";
                     writer.WriteLine(outputData);
-
                 }
             }
             catch (Exception ex)
             {
-                // Report to the user that there was an error
                 Console.WriteLine($"ERROR saving task list: {ex.Message}.  Please call support at 867-5309");
             }
         }
@@ -33,12 +31,10 @@ namespace Capstone.Classes
                 {
                     string outputData = $"{DateTime.Now} FEED MONEY: {Money.previousBalance:c} {Money.balance:c}";
                     writer.WriteLine(outputData);
-
                 }
             }
             catch (Exception ex)
             {
-                // Report to the user that there was an error
                 Console.WriteLine($"ERROR saving task list: {ex.Message}.  Please call support at 867-5309");
             }
         }

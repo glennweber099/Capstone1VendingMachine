@@ -59,6 +59,9 @@ namespace Capstone.Classes
                 {
                     Console.WriteLine("Please enter a valid product code: ");
                     string inputl = Console.ReadLine().Trim().ToUpper();
+                    string actualName = VendingMachine.productName[inputl];
+                    decimal actualPrice = VendingMachine.productPrice[inputl];
+
                     if ((Money.balance > 0) && (Money.balance > VendingMachine.productPrice[inputl]))
                     {
                         if (Inventory.checkProductCode(inputl))
@@ -66,10 +69,10 @@ namespace Capstone.Classes
                             if (Inventory.checkInventory(inputl))
                             {
                                 Inventory.dispenseProduct(inputl);
-                                Console.WriteLine($"{VendingMachine.productName[inputl]}\n");
-                                Money.SubtractMoney(VendingMachine.productPrice[inputl]);
+                                Console.WriteLine($"{actualName}\n");
+                                Money.SubtractMoney(actualPrice);
                                 Inventory.updateInventory(inputl);
-                                Money.UpdatePreviousBalance(VendingMachine.productPrice[inputl]);
+                                Money.UpdatePreviousBalance(actualPrice);
 
                                 Console.Clear();
                             }
