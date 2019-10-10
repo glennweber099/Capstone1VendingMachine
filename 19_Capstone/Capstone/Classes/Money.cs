@@ -36,7 +36,6 @@ namespace Capstone.Classes
             int dimeCount = 0;
             int nickelCount = 0;
             while (remainingBalance >= 0.25M)
-
             {
                 remainingBalance -= 0.25M;
                 quarterCount++;

@@ -23,10 +23,10 @@ namespace CapstoneTests
             Money product = new Money();
 
             // Act
-            
+            decimal actualResult = product.
 
             // Assert
-            Assert.AreEqual(expectedResult, actualRN);
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
     
