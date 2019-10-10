@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CapstoneTests
 {
     [TestClass]
@@ -13,20 +14,20 @@ namespace CapstoneTests
         private class Money { }
 
         [DataTestMethod]
-        [DataRow(, , DisplayName = "")]
+        //[DataRow(, , DisplayName = "")]
 
 
-        public void BalanceTest1(int submittedNumber, string expectedResult)
+        public void BalanceTest1()
         {
             // Arrange
             // Create a new object
             Money product = new Money();
 
             // Act
-            decimal actualResult = product.
+            decimal actualResult = 0.0M;
 
             // Assert
-            Assert.AreEqual(expectedResult, actualResult);
+            //Assert.AreEqual(expectedResult, actualResult);
         }
     }
     
