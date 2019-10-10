@@ -35,23 +35,26 @@ namespace Capstone.Classes
             int quarterCount = 0;
             int dimeCount = 0;
             int nickelCount = 0;
-            string changeGivenString = $"Quarter(s): {quarterCount}\n Dime(s): {dimeCount} \n Nickel(s): {nickelCount}";
-            while ((remainingBalance - 0.25M) > 0.10M)
+            while (remainingBalance >= 0.25M)
+
             {
                 remainingBalance -= 0.25M;
                 quarterCount++;
             }
-            while ((remainingBalance - 0.10M) > 0.05M)
+            while (remainingBalance >= 0.10M)
             {
                 remainingBalance -= 0.10M;
                 dimeCount++;
             }
-            while ((remainingBalance - 0.05M) >= 0M)
+            while (remainingBalance >= 0.05M)
             {
                 remainingBalance -= 0.05M;
                 nickelCount++;
             }
-            return changeGivenString;
+            string returnString = $"\nQuarter(s):{quarterCount}\n Dime(s):{dimeCount} \n Nickel(s):{nickelCount}";
+            return returnString;
+            
+
 
         }
     }

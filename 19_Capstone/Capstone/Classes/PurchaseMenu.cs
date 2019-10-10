@@ -93,7 +93,8 @@ namespace Capstone.Classes
                 }
                 if (input == "3")
                 {
-                    Money.GiveChange(Money.balance);
+                    Console.WriteLine($"{Money.GiveChange(Money.balance)}");
+                    Console.WriteLine("Please press [ENTER] to return to the menu");
                     Console.ReadLine();
                     Console.Clear();
                     menu = false;
