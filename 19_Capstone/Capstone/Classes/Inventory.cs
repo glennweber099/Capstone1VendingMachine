@@ -10,7 +10,7 @@ namespace Capstone.Classes
 
         public static bool checkInventory(string location)
         {
-            if (Products.inventoryLevel[location] > 0)
+            if (VendingMachine.stockedMachineInventory[location] > 0)
             {
                 return true;
             }
@@ -18,7 +18,7 @@ namespace Capstone.Classes
         }
         public static bool checkProductCode(string location)
         {
-            if (Products.inventoryLevel.ContainsKey(location))
+            if (VendingMachine.stockedMachineInventory.ContainsKey(location))
             {
                 return true;
             }
@@ -26,37 +26,36 @@ namespace Capstone.Classes
         }
         public static void dispenseProduct(string location)
         {
-            if (Products.ProductType == "Chip")
+            if (location.Substring(0,1).ToLower() == "a")
             {
                 Console.Write("Crunch Crunch, Yum!");
                 Console.ReadLine();
             }
 
-            else if (Products.ProductType == "Candy")
-            {
+            else if (location.Substring(0, 1).ToLower() == "b")
+                {
                 Console.Write("Munch Munch, Yum!");
                 Console.ReadLine();
             }
 
-            else if (Products.ProductType == "Drink")
-            {
+            else if (location.Substring(0, 1).ToLower() == "c")
+                    {
                 Console.Write("Glug Glug, Yum!");
                 Console.ReadLine();
             }
 
 
-            else if (Products.ProductType == "Gum")
-            {
+            else if (location.Substring(0, 1).ToLower() == "d")
+                        {
                 Console.Write("Chew Chew, Yum!");
                 Console.ReadLine();
             }
 
-            Transaction.writeOut();
-
         }
         public static void updateInventory(string location)
         {
-            Products.inventoryLevel[location] -= 1;
+            VendingMachine.stockedMachineInventory[location] -= 1;
+            Transaction.writeOutItem(location);
         }
     }
 }

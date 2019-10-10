@@ -8,14 +8,28 @@ namespace Capstone.Classes
     public class Money
     {
         public static decimal balance { get; private set; }
+        public static decimal previousBalance { get; private set; }
+
+        public static void InitiateBalance()
+        {
+            previousBalance = 0.00M;
+        }
         public static void AddMoney(decimal amount)
         {
-            balance = balance + amount;
+
+            balance += amount;
+            Transaction.writeOutDeposit(amount);
+            previousBalance += amount;
         }
         public static void SubtractMoney(decimal amount)
         {
             balance -= amount;
         }
+        public static void UpdatePreviousBalance(decimal amount)
+        {
+            previousBalance -= amount;
+        }
+
         public static string GiveChange(decimal remainingBalance)
         {
             int quarterCount = 0;

@@ -11,7 +11,6 @@ namespace Capstone.Classes
             bool menu = true;
             while (menu == true)
             {
-
                 Console.WriteLine($"\t\t\t\tPurchase Menu \n\t\t\t\t1) Feed Money \n\t\t\t\t2) Select Product \n\t\t\t\t3) Finish \n\t\t\t\t {Money.balance:c}");
                 string input = Console.ReadLine().ToLower().Trim();
                 if (input.Length == 0)
@@ -59,23 +58,38 @@ namespace Capstone.Classes
                 if (input == "2")
                 {
                     Console.WriteLine("Please enter a valid product code: ");
-                    string inputl = Console.ReadLine().Trim();
-                    //if (Inventory.checkProductCode(inputl))
-                    //{
-                        if (Inventory.checkInventory(inputl))
+                    string inputl = Console.ReadLine().Trim().ToUpper();
+                    if ((Money.balance > 0) && (Money.balance > VendingMachine.productPrice[inputl]))
+                    {
+                        if (Inventory.checkProductCode(inputl))
                         {
-                            Inventory.dispenseProduct(inputl);
-                            Money.SubtractMoney(Products.ProductPrice);
-                            Inventory.updateInventory(inputl);
+                            if (Inventory.checkInventory(inputl))
+                            {
+                                Inventory.dispenseProduct(inputl);
+                                Console.WriteLine($"{VendingMachine.productName[inputl]}\n");
+                                Money.SubtractMoney(VendingMachine.productPrice[inputl]);
+                                Inventory.updateInventory(inputl);
+                                Money.UpdatePreviousBalance(VendingMachine.productPrice[inputl]);
+
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                Console.WriteLine("SOLD OUT");
+                            }
+                            continue;
                         }
-                        else
-                        {
-                        Console.WriteLine("SOLD OUT");
-                        }
+                        Console.WriteLine("Invalid Product Code");
+                        Console.Clear();
                         continue;
-                    //}
-                    //Console.WriteLine("Invalid Product Code");
-                    //continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please put more money in and try again");
+                        Console.ReadLine();
+                        Console.Clear();
+                        continue;
+                    }
                 }
                 if (input == "3")
                 {

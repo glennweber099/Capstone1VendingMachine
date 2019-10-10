@@ -16,7 +16,6 @@ namespace Capstone.Classes
 
         public static Dictionary<string, int> inventoryLevel = new Dictionary<string, int>(){};
 
-
         public Products(string location, string productName, decimal productPrice, string productType)
         {
             Location = location;
@@ -35,13 +34,12 @@ namespace Capstone.Classes
                 //Directory.SetCurrentDirectory(@"../../../..");
                 using (StreamReader sr = new StreamReader("Inventory.txt"))
                 {
-                    string inputLine = sr.ReadLine();
                     while (!sr.EndOfStream)
                     {
+                        string inputLine = sr.ReadLine();
                         string[] fields = inputLine.Split(separator);
                         Products product = new Products(fields[0], fields[1], decimal.Parse(fields[2]), fields[3]);
                         Console.WriteLine($"{fields[0]} - {fields[1]} - ${fields[2]:C}");
-                        //inventoryLevel.Add(fields[0], 5);
                     }
                 }
             }
