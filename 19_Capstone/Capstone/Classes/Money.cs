@@ -14,8 +14,7 @@ namespace Capstone.Classes
         }
         public static void SubtractMoney(decimal amount)
         {
-            //TODO Update after classes are created
-            //balance -= productPrice(productName);
+            balance -= amount;
         }
         public static string GiveChange(decimal remainingBalance)
         {

@@ -10,16 +10,20 @@ namespace Capstone.Classes
 
         public static bool checkInventory(string location)
         {
-            //if (amountInStock > 0)
-            
-            // TODO Checks if product is in-stock
-            return true;
+            if (Products.amountInStock > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public static bool checkProductCode(string location)
         {
-            // TODO Checks if product exists
-            return true;
+            if (Products.inventoryLevel.ContainsKey(location))
+            {
+                return true;
+            }
+            return false;
         }
         public static void dispenseProduct(string location)
         {
@@ -45,7 +49,7 @@ namespace Capstone.Classes
             }
 
             try
-            {   // TODO Update variables to call data
+            {  
                 Directory.SetCurrentDirectory(@"../../../..");
                 using (StreamWriter writer = new StreamWriter("Log.txt", true))
                 {
@@ -64,7 +68,6 @@ namespace Capstone.Classes
         }
         public static void updateInventory(string location)
         {
-            // TODO Update amount remaining
             Products.inventoryLevel[location] -= 1;
         }
     }

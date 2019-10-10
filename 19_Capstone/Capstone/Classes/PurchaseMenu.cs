@@ -59,13 +59,14 @@ namespace Capstone.Classes
                 if (input == "2")
                 {
                     Console.WriteLine("Please enter a valid product code: ");
-                    if (Inventory.checkProductCode(Products.Location))
+                    string inputl = Console.ReadLine().Trim();
+                    if (Inventory.checkProductCode(inputl))
                     {
-                        if (Inventory.checkInventory(Products.Location))
+                        if (Inventory.checkInventory(inputl))
                         {
-                            Inventory.dispenseProduct(Products.Location);
-                            Money.SubtractMoney(Money.balance);
-                            Inventory.updateInventory(Products.Location);
+                            Inventory.dispenseProduct(inputl);
+                            Money.SubtractMoney(Products.ProductPrice);
+                            Inventory.updateInventory(inputl);
                         }
                         Console.WriteLine("SOLD OUT");
                         continue;
@@ -76,6 +77,9 @@ namespace Capstone.Classes
                 if (input == "3")
                 {
                     Money.GiveChange(Money.balance);
+                    Console.WriteLine("/nThis was the change given");
+                    Console.ReadLine();
+                    Console.Clear();
                     menu = false;
                     break;
 

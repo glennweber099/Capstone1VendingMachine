@@ -11,26 +11,10 @@ namespace Capstone.Classes
 
         public static string Location { get;  }
         public static string ProductName { get; }
-        public static double ProductPrice { get;  }
+        public static decimal ProductPrice { get;  }
         public static string ProductType { get; }
-        public static int amountInStock
-        {
-            get
-            {
-                return inventoryLevel[Location];
-            }
-        }
 
-
-        public Products(string location, string productName, double productPrice, string productType)
-        {
-            location = Location;
-            productName = ProductName;
-            productPrice = ProductPrice;
-            productType = ProductType;
-        }
-
-        public static Dictionary<string, int> inventoryLevel = new Dictionary<string, int>()
+        public Dictionary<string, int> inventoryLevel = new Dictionary<string, int>()
         {
             { "A1", 5 },
             { "A2", 5 },
@@ -50,9 +34,26 @@ namespace Capstone.Classes
             { "D4", 5 },
         };
 
+        public int amountInStock
+        {
+            get
+            {
+                return inventoryLevel[Location];
+            }
+        }
+
+
+        public Products(string location, string productName, decimal productPrice, string productType)
+        {
+            location = Location;
+            productName = ProductName;
+            productPrice = ProductPrice;
+            productType = ProductType;
+        }
+
+
         public static void LoadInventory()
         {
-            // TODO: Load products from the file (Inventory.txt), parse and display inventory
             try
             {
                 Directory.SetCurrentDirectory(@"../../../..");
@@ -63,7 +64,7 @@ namespace Capstone.Classes
                         string inputLine = sr.ReadLine();
                         string[] fields = inputLine.Split(separator);
 
-                        Products product = new Products(fields[0], fields[1], double.Parse(fields[2]), fields[3]);
+                        Products product = new Products(fields[0], fields[1], decimal.Parse(fields[2]), fields[3]);
 
                         Console.WriteLine($"{fields[0]} - {fields[1]} - ${fields[2]:C}");
                     }
