@@ -50,7 +50,7 @@ namespace Capstone.Classes
             { "D4", 5 },
         };
 
-        public void LoadInventory()
+        public static void LoadInventory()
         {
             // TODO: Load products from the file (Inventory.txt), parse and display inventory
             try
@@ -63,7 +63,8 @@ namespace Capstone.Classes
                         string[] fields = inputLine.Split(separator);
 
                         Products product = new Products(fields[0], fields[1], double.Parse(fields[2]), fields[3]);
-                        
+
+                        Console.WriteLine(product);
                     }
                 }
             }
