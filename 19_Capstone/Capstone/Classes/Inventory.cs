@@ -51,22 +51,7 @@ namespace Capstone.Classes
                 Console.ReadLine();
             }
 
-            try
-            {  
-                //Directory.SetCurrentDirectory(@"../../../..");
-                using (StreamWriter writer = new StreamWriter("Log.txt", true))
-                {
-                    string outputData = $"{DateTime.Now}{Products.ProductName} {Products.Location} {Products.ProductPrice} {Money.balance}";
-                    writer.WriteLine(outputData);
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                // Report to the user that there was an error
-                Console.WriteLine($"ERROR saving task list: {ex.Message}.  Please call support at 867-5309");
-            }
-
+            Transaction.writeOut();
 
         }
         public static void updateInventory(string location)
