@@ -6,10 +6,9 @@ namespace Capstone.Classes
 {
     public class PurchaseMenu
     {
-        static void Main(string[] args)
+        public void purchaseMenu()
         {
             bool menu = true;
-
             while (menu == true)
             {
 
@@ -31,7 +30,6 @@ namespace Capstone.Classes
                 {
 
                     Console.WriteLine($"\t\t\t\t1) $1 \n\t\t\t\t2) $2 \n\t\t\t\t3) $5 \n\t\t\t\t4) $10");
-                    string inputMoney = Console.ReadLine().ToLower().Trim();
                     if (input == "1")
                     {
                         Money.AddMoney(1);
@@ -56,23 +54,29 @@ namespace Capstone.Classes
                 if (input == "2")
                 {
                     Console.WriteLine("Please enter a valid product code: ");
-                    if (Inventory.checkProductCode(location))
+                    if (Inventory.checkProductCode(Inventory.location))
                     {
                         if (Inventory.checkInventory(location))
                         {
                             Inventory.dispenseProduct(location);
+                            Money.SubtractMoney(Money.balance);
                             Inventory.updateInventory(location);
                         }
                         Console.WriteLine("SOLD OUT");
                         continue;
                     }
+                    Console.WriteLine("Invalid Product Code");
                     continue;
                 }
                 if (input == "3")
                 {
+                    Money.GiveChange(Money.balance);
+                    menu = false;
+                    break;
 
                 }
             }
+           }
+
         }
     }
-}
