@@ -34,30 +34,31 @@ namespace Capstone.Classes
                     string inputMoney = Console.ReadLine().ToLower().Trim();
                     if (input == "1")
                     {
-                        AddMoney(1);
+                        Money.AddMoney(1);
                         continue;
                     }
                     if (input == "2")
                     {
-                        AddMoney(2);
+                        Money.AddMoney(2);
                         continue;
                     }
                     if (input == "3")
                     {
-                        AddMoney(5);
+                        Money.AddMoney(5);
                         continue;
                     }
                     if (input == "4")
                     {
-                        AddMoney(10);
+                        Money.AddMoney(10);
                         continue;
                     }
                 }
                 if (input == "2")
                 {
-                    if (Inventory.CheckProductCode(location))
+                    Console.WriteLine("Please enter a valid product code: ");
+                    if (Inventory.checkProductCode(location))
                     {
-                        if (Inventory.CheckInventory(location))
+                        if (Inventory.checkInventory(location))
                         {
                             Inventory.dispenseProduct(location);
                             Inventory.updateInventory(location);
@@ -66,7 +67,6 @@ namespace Capstone.Classes
                         continue;
                     }
                     continue;
-
                 }
                 if (input == "3")
                 {
