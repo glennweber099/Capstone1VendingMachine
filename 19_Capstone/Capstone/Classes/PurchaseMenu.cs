@@ -12,7 +12,7 @@ namespace Capstone.Classes
             while (menu == true)
             {
 
-                Console.WriteLine($"\t\t\t\t1) Feed Money \n\t\t\t\t2) Select Product \n\t\t\t\t3) Finish \n\t\t\t\t {Money.balance}");
+                Console.WriteLine($"Purchase Menu \n\t\t\t\t1) Feed Money \n\t\t\t\t2) Select Product \n\t\t\t\t3) Finish \n\t\t\t\t {Money.balance}");
                 string input = Console.ReadLine().ToLower().Trim();
                 if (input.Length == 0)
                 {
@@ -56,11 +56,11 @@ namespace Capstone.Classes
                     Console.WriteLine("Please enter a valid product code: ");
                     if (Inventory.checkProductCode(Inventory.location))
                     {
-                        if (Inventory.checkInventory(location))
+                        if (Inventory.checkInventory(Inventory.location))
                         {
-                            Inventory.dispenseProduct(location);
+                            Inventory.dispenseProduct(Inventory.location);
                             Money.SubtractMoney(Money.balance);
-                            Inventory.updateInventory(location);
+                            Inventory.updateInventory(Inventory.location);
                         }
                         Console.WriteLine("SOLD OUT");
                         continue;
@@ -76,7 +76,7 @@ namespace Capstone.Classes
 
                 }
             }
-           }
-
         }
+
     }
+}
