@@ -6,6 +6,8 @@ namespace Capstone.Classes
 {
     public class Inventory
     {
+        public static string location { get; }
+
         public bool checkInventory(string location)
         {
             // TODO Checks if product is in-stock
