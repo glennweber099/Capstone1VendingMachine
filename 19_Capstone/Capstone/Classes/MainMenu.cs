@@ -50,19 +50,19 @@ namespace Capstone.Classes
                     menum = false;
                     break;
                 }
-                if (input == "4")
-                {
-                    Console.Clear();
-                    //TODO  Print Correct Sales Report from VendingMachine.cs, stock values are resetting.
+                //if (input == "4")
+                //{
+                //    Console.Clear();
+                //    //TODO  Print Correct Sales Report from VendingMachine.cs, stock values are resetting.
 
-                    VendingMachine ex = new VendingMachine();
-                    ex.WriteOutSalesReport();
-                    Console.WriteLine("\t\t\tSales Report Printed. Please press [ENTER] to return to the menu");
-                    Console.ReadLine();
-                    Console.Clear();
+                //    VendingMachine ex = new VendingMachine();
+                //    ex.WriteOutSalesReport();
+                //    Console.WriteLine("\t\t\tSales Report Printed. Please press [ENTER] to return to the menu");
+                //    Console.ReadLine();
+                //    Console.Clear();
 
-                    continue;
-                }
+                //    continue;
+                //}
 
 
             }
