@@ -167,11 +167,11 @@ namespace Capstone.Classes
             }
         }
 
-        public void writeOutSalesReport()
+        public  void writeOutSalesReport()
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter($"{DateTime.Now}.txt", false))
+                using (StreamWriter writer = new StreamWriter($"{DateTime.Now.ToString().Replace(":","-").Replace("/","-")}.txt", false))
                 {
                     decimal totalSales = 0.0M;
 
@@ -183,7 +183,7 @@ namespace Capstone.Classes
                         writer.WriteLine(outputData);
 
                         totalSales += (numberToWrite * productPrice[entry.Key]);
-                        
+
                     }
 
                     writer.WriteLine($"Total Sales:  {totalSales:c}");
@@ -194,7 +194,6 @@ namespace Capstone.Classes
                 Console.WriteLine($"ERROR saving task list: {ex.Message}.  Please call support at 867-5309");
             }
         }
-
 
 
         public bool checkInventory(string location)

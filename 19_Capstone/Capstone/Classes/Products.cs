@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    public class Products
+    public class Products : VendingMachine
     {
         private const char separator = '|';
 

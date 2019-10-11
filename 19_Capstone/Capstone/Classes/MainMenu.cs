@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Capstone.Classes
 {
-    public class MainMenu
+    public class MainMenu : VendingMachine
     {
         static void Main(string[] args)
         {
@@ -49,7 +49,15 @@ namespace Capstone.Classes
                     menum = false;
                     break;
                 }
-                
+                if (input == "4")
+                {
+                    Console.Clear();
+                    VendingMachine option = new VendingMachine();
+                    option.writeOutSalesReport();
+                    continue;
+                }
+
+
             }
         }
     }
