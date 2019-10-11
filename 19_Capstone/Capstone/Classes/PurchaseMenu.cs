@@ -11,7 +11,7 @@ namespace Capstone.Classes
             bool menu = true;
             while (menu == true)
             {
-                Console.WriteLine($"\t\t\t\tPurchase Menu \n\t\t\t\t1) Feed Money \n\t\t\t\t2) Select Product \n\t\t\t\t3) Finish \n\t\t\t\t {Balance:c}");
+                Console.WriteLine($"\t\t\t\tPurchase Menu \n\t\t\t\t1) Feed Money \n\t\t\t\t2) Select Product \n\t\t\t\t3) Finish \n\n\t\t\t\t Balance: {Balance:c}");
                 string input = Console.ReadLine().ToLower().Trim();
                 if (input.Length == 0)
                 {
@@ -57,9 +57,13 @@ namespace Capstone.Classes
                 }
                 if (input == "2")
                 {
-                    Products.LoadInventory();
 
-                    Console.WriteLine("\t\t\t\tPlease enter a valid product code: ");
+                    Console.Clear();
+                    Console.WriteLine($"\t\t\t\tPurchasing Item... ");
+                    Console.WriteLine($"\t\t\t\tBalance: {Balance:c}\n");
+                    Products.LoadInventory();
+                    
+                    Console.WriteLine("\n\n\t\t\t\tPlease enter a valid product code: ");
                     string inputl = Console.ReadLine().Trim().ToUpper();
                     Console.Clear();
                     if ((Balance > 0))
@@ -112,8 +116,9 @@ namespace Capstone.Classes
                 }
                 if (input == "3")
                 {
+                    Console.Clear();
                     Console.WriteLine($"\t\t\t\t{GiveChange(Balance)}");
-                    Console.WriteLine("\t\t\t\tPlease press [ENTER] to return to the menu");
+                    Console.WriteLine("\n\t\t\t\tPlease press [ENTER] to return to the menu");
                     Console.ReadLine();
                     Console.Clear();
                     menu = false;

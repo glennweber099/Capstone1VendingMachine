@@ -10,7 +10,6 @@ namespace Capstone.Classes
         static void Main(string[] args)
         {
             Directory.SetCurrentDirectory(@"../../../..");
-            //VendingMachine VM = new VendingMachine();
             bool menum = true;
             while (menum == true)
             {
