@@ -1,4 +1,4 @@
-Potato Crisps(chips)|5
+Potato Crisps|5
 Stackers|5
 Grain Waves|5
 Cloud Popcorn|5
@@ -14,4 +14,6 @@ U-Chews|5
 Little League Chew|5
 Chiclets|5
 Triplemint|5
-Total Sales:  $132.50
+
+
+Total Sales:  $0.00

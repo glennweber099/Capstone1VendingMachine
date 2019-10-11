@@ -11,7 +11,6 @@ namespace Capstone.Classes
 
         public static void LoadInventory()
         {
-            List<Products> products = new List<Products>();
             try
             {
                 using (StreamReader sr = new StreamReader("Inventory.txt"))

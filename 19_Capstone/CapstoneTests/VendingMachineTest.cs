@@ -19,9 +19,9 @@ namespace CapstoneTests
 
             //Testing 2 Deposits
             acc.AddMoney(5.00M);
-            Assert.AreEqual(5.00M, acc.balance);
+            Assert.AreEqual(5.00M, acc.Balance);
             acc.AddMoney(15.00M);
-            Assert.AreEqual(20.00M, acc.balance);
+            Assert.AreEqual(20.00M, acc.Balance);
 
         }
         [TestMethod]
@@ -34,9 +34,9 @@ namespace CapstoneTests
 
             // Testing 2 purchases lowering the balance
             acc.SubtractMoney(5.00M);
-            Assert.AreEqual(20M, acc.balance);
+            Assert.AreEqual(20M, acc.Balance);
             acc.SubtractMoney(3.00M);
-            Assert.AreEqual(17M, acc.balance);
+            Assert.AreEqual(17M, acc.Balance);
 
         }
 
@@ -44,7 +44,7 @@ namespace CapstoneTests
         public void CheckInventoryWorks()
         {
             VendingMachine acc = new VendingMachine();
-            Assert.AreEqual(true, acc.checkInventory("A2"));
+            Assert.AreEqual(true, acc.checkStockLevel("A2"));
         }
 
 
@@ -67,38 +67,14 @@ namespace CapstoneTests
 
 
         [DataTestMethod]
-        [DataRow(3.50, 0, 0, 0, DisplayName = "")]
-        [DataRow(2.50, 0, 0, 0, DisplayName = "")]
-
-        public string CheckGiveChange(double changeAmount, int expectedNickelCount)
-        {
-            VendingMachine acc = new VendingMachine();
-            decimal conversion = 0.00M;
-            conversion = (decimal)changeAmount;
-            acc.GiveChange(conversion);
-
-            Assert.AreEqual(CheckGiveChange(changeAmount), ($"\nQuarter(s):{acc.GiveChange((decimal)changeAmount).quarterCount}\n Dime(s):{dimeCount} \n Nickel(s):{nickelCount}"));
-            Assert.AreEqual();
-
-
-        }
-
-        //[TestMethod]
-        //public void Check()
-        //{
-        //    VendingMachine acc = new VendingMachine();
-
-        //}
-
-        [DataTestMethod]
         [DataRow("A2", 5, true, DisplayName = "Testing A2")]
         [DataRow("C4", 5, true, DisplayName = "Testing C4")]
 
         public void CheckInventoryTest(string location, int expectedStock, bool expectedResult)
         {
             VendingMachine acc = new VendingMachine();
-            bool actualResult = acc.checkInventory(location);
-            int actualStock = acc.stockedMachineInventory[location];
+            bool actualResult = acc.checkStockLevel(location);
+            int actualStock = acc.productStockLevels[location];
 
             Assert.AreEqual(expectedResult, actualResult);
             Assert.AreEqual(expectedStock, actualStock);

@@ -10,6 +10,7 @@ namespace Capstone.Classes
         static void Main(string[] args)
         {
             Directory.SetCurrentDirectory(@"../../../..");
+            //VendingMachine VM = new VendingMachine();
             bool menum = true;
             while (menum == true)
             {
@@ -42,7 +43,7 @@ namespace Capstone.Classes
                     Console.Clear();
                     PurchaseMenu option = new PurchaseMenu();
 
-                    option.purchaseMenu();
+                    option.PurchaseMenuUI();
                 }
                 if (input == "3")
                 {
@@ -52,8 +53,14 @@ namespace Capstone.Classes
                 if (input == "4")
                 {
                     Console.Clear();
-                    VendingMachine option = new VendingMachine();
-                    option.writeOutSalesReport();
+                    //TODO  Print Correct Sales Report from VendingMachine.cs, stock values are resetting.
+
+                    VendingMachine ex = new VendingMachine();
+                    ex.WriteOutSalesReport();
+                    Console.WriteLine("\t\t\tSales Report Printed. Please press [ENTER] to return to the menu");
+                    Console.ReadLine();
+                    Console.Clear();
+
                     continue;
                 }
 
