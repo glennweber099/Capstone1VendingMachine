@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,24 +11,23 @@ namespace CapstoneTests
     [TestClass]
     public class MoneyTests
     {
-        private class Money { }
 
         [DataTestMethod]
-        //[DataRow(, , DisplayName = "")]
+        [DataRow(, , DisplayName = "")]
 
 
         public void BalanceTest1()
         {
             // Arrange
             // Create a new object
-            Money product = new Money();
+            
 
             // Act
-            decimal actualResult = 0.0M;
+            //decimal actualResult = product;
 
             // Assert
             //Assert.AreEqual(expectedResult, actualResult);
         }
     }
-    
+
 }
