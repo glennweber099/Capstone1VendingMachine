@@ -36,6 +36,7 @@ namespace Capstone.Classes
             int quarterCount = 0;
             int dimeCount = 0;
             int nickelCount = 0;
+            Console.WriteLine($"Your change is: {remainingBalance:c}");
             while (remainingBalance >= 0.25M)
             {
                 remainingBalance -= 0.25M;

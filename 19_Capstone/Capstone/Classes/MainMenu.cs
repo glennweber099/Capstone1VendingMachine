@@ -14,7 +14,7 @@ namespace Capstone.Classes
             while (menum == true)
             {
 
-                Console.WriteLine($"\t\t\t\tMain Menu \n\t\t\t\t1) Display Items \n\t\t\t\t2) Purchase Menu \n\t\t\t\t3) Exit");
+                Console.WriteLine($"\t\t\t\t\tMain Menu \n\t\t\t\t\t1) Display Items \n\t\t\t\t\t2) Purchase Menu \n\t\t\t\t\t3) Exit");
                 string input = Console.ReadLine().ToLower().Trim();
                 if (input.Length == 0)
                 {
@@ -32,6 +32,9 @@ namespace Capstone.Classes
                 {
                     Console.Clear();
                     Products.LoadInventory();
+                    Console.WriteLine("\t\t\tPlease press [ENTER] to return to the menu");
+                    Console.ReadLine();
+                    Console.Clear();
                     
                 }
                 if (input == "2")

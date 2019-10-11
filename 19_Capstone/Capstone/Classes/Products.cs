@@ -20,7 +20,7 @@ namespace Capstone.Classes
                     {
                         string inputLine = sr.ReadLine();
                         string[] fields = inputLine.Split(separator);
-                        Console.WriteLine($"{fields[0]} - {fields[1]} - ${fields[2]:C}");
+                        Console.WriteLine($"\t\t\t\t{fields[0]} - {fields[1]} - ${fields[2]:C}");
                     }
                 }
             }

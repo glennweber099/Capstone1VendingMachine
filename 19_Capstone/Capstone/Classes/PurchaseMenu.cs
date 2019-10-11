@@ -59,42 +59,56 @@ namespace Capstone.Classes
                 {
                     Products.LoadInventory();
 
-                    Console.WriteLine("Please enter a valid product code: ");
+                    Console.WriteLine("\t\t\t\tPlease enter a valid product code: ");
                     string inputl = Console.ReadLine().Trim().ToUpper();
-                    string actualName = productName[inputl];
-                    decimal actualPrice = productPrice[inputl];
-
-                    if ((balance > 0) && (balance > actualPrice))
+                    Console.Clear();
+                    if ((balance > 0))
                     {
-                        if (checkProductCode(inputl))
+                        if (checkProductCode(inputl.ToUpper()))
                         {
-                            if (checkInventory(inputl))
+                            decimal actualPrice = productPrice[inputl];
+                            string actualName = productName[inputl];
+                            if ((balance > actualPrice))
                             {
-                                dispenseProduct(inputl);
-                                Console.WriteLine($"{actualName}\n");
-                                SubtractMoney(actualPrice);
-                                updateInventory(inputl);
-                                UpdatePreviousBalance(actualPrice);
-
-                                Console.Clear();
+                                if (checkInventory(inputl))
+                                {
+                                    SubtractMoney(actualPrice);
+                                    updateInventory(inputl);
+                                    UpdatePreviousBalance(actualPrice);
+                                    Console.Clear();
+                                    dispenseProduct(inputl);
+                                    Console.WriteLine($"Thank you for purchasing {actualName}.\nPress [ENTER] to return to the menu");
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("SOLD OUT");
+                                }
+                                continue;
                             }
                             else
                             {
-                                Console.WriteLine("SOLD OUT");
+                                Console.WriteLine("Please put more money in and try again");
+                                Console.ReadLine();
+                                Console.Clear();
+                                continue;
                             }
-                            continue;
                         }
                         Console.WriteLine("Invalid Product Code");
+                        Console.WriteLine("Press [ENTER] to return to Purchase menu");
+                        Console.ReadLine();
                         Console.Clear();
                         continue;
                     }
                     else
                     {
-                        Console.WriteLine("Please put more money in and try again");
+                        Console.WriteLine("Please put more money in and try again. Press [ENTER] to continue");
                         Console.ReadLine();
                         Console.Clear();
                         continue;
                     }
+
                 }
                 if (input == "3")
                 {
