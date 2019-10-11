@@ -167,6 +167,35 @@ namespace Capstone.Classes
             }
         }
 
+        public void writeOutSalesReport()
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter($"{DateTime.Now}.txt", false))
+                {
+                    decimal totalSales = 0.0M;
+
+                    foreach (KeyValuePair<string, string> entry in productName)
+                    {
+                        int numberToWrite = 0;
+                        numberToWrite = stockedMachineInventory[entry.Key];
+                        string outputData = $"{entry.Value}|{numberToWrite}";
+                        writer.WriteLine(outputData);
+
+                        totalSales += (numberToWrite * productPrice[entry.Key]);
+                        
+                    }
+
+                    writer.WriteLine($"Total Sales:  {totalSales:c}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR saving task list: {ex.Message}.  Please call support at 867-5309");
+            }
+        }
+
+
 
         public bool checkInventory(string location)
         {
