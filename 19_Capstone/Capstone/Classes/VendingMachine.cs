@@ -11,8 +11,6 @@ namespace Capstone.Classes
         public decimal balance { get; set; }
         public decimal previousBalance { get; set; }
 
-
-
         public void InitiateBalance()
         {
             previousBalance = 0.00M;

@@ -4,29 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Capstone.Classes;
 
 
 namespace CapstoneTests
 {
     [TestClass]
-    public class MoneyTests
+    public class VendingMachineTest
     {
-
-        [DataTestMethod]
-        [DataRow(, , DisplayName = "")]
-
-
-        public void BalanceTest1()
+        [TestMethod]
+        public void AddMoneyWorks()
         {
-            // Arrange
-            // Create a new object
+            VendingMachine acc = new VendingMachine();
+            acc.AddMoney(5.00M);
+            Assert.AreEqual(5.00M, acc.balance);
             
+        }
+        [TestMethod]
+        public void SubtractMoneyWorks()
+        {
+            VendingMachine acc = new VendingMachine();
+            acc.AddMoney(5.00M);
+            acc.SubtractMoney(5.00M);
+            Assert.AreEqual(0M, acc.balance);
 
-            // Act
-            //decimal actualResult = product;
-
-            // Assert
-            //Assert.AreEqual(expectedResult, actualResult);
         }
     }
 
